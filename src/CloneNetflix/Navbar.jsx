@@ -1,4 +1,4 @@
-import { Button, Grid, makeStyles, Link } from "@material-ui/core";
+import { Button, Grid, makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
@@ -8,55 +8,62 @@ import {
 } from "react-router-dom";
 
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import SearchIcon from "@material-ui/icons/Search";
 import Avatar from "@material-ui/core/Avatar";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import { BsCaretDown } from "react-icons/bs";
 import IconButton from "@material-ui/core/IconButton";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
+import SearchBarBox from "./SearchBarBox";
 
 const useStyle = makeStyles((theme) => {
   return {
     navbar: {
-      display: "block",
-      padding: "7px 25px",
+      display: "flex",
+      position: "static",
+      height: "60px",
+      backgroundColor: "black",
     },
     navbarLogo: {
-      width: "98px",
-      height: "40px",
+      width: "150px",
+      height: "50px",
       cursor: "pointer",
-      float: "left",
+      paddingLeft: "20px",
+      // float: "left",
     },
     navbarList: {
       display: "flex",
       listStyle: "none",
+      padding: "0px",
+      fontSize: "1.3em",
     },
-    home: {
+    navRightAvatarList: {
+      display: "flex",
+      listStyle: "none",
+      fontSize: "1.3em",
+      padding: "0px 15px 5px 10px",
+    },
+    navbarListForDvdToNotification: {
+      display: "flex",
+      listStyle: "none",
+      paddingTop: "5px",
+      fontSize: "1.2em",
+    },
+    navRightItems: {
+      padding: "0px 12px",
+    },
+    showListItem: {
       cursor: "grab",
       color: "white",
     },
-    tvShows: {
-      cursor: "pointer",
-      color: "white",
-    },
-    movies: {
-      cursor: "pointer",
-      color: "white",
-    },
-    latest: {
-      cursor: "pointer",
-      color: "white",
-    },
-    mylist: {
-      cursor: "pointer",
-      color: "white",
-    },
+
     navRightDiv: {
       display: "flex",
+      paddingTop: "10px",
+      float: "right",
     },
     searchIcon: {
       cursor: "pointer",
       color: "white",
-      float: "right",
+      paddingTop: "15px",
     },
     dvd: {
       cursor: "pointer",
@@ -90,16 +97,24 @@ const useStyle = makeStyles((theme) => {
       color: "white",
       float: "right",
     },
+    bsCaretDown: {
+      padding: "8px 0px 0px 5px",
+      cursor: "pointer",
+    },
+    searchBar: {
+      paddingTop: "20px",
+    },
   };
 });
 
 const SearchBar = ({ searchText, setSearchText }) => {
   const BarStyling = {
-    width: "100%",
+    width: "80%",
     background: "#181818",
-    border: "none",
+    border: "1px #D9D9D9",
+    paddingTop: "5px",
 
-    float: "left",
+    // float: "left",
     color: "#FFF",
   };
 
@@ -130,43 +145,50 @@ const Navbar = () => {
   return (
     <div className={classes.navbar}>
       <Router>
-        <Grid container xs={12} lg={12} style={{ padding: "5px 20px" }}>
-          <Grid item xs={1} lg={1}>
+        <Grid container>
+          <Grid item lg={2}>
             <NavLink to="/browser">
-              <img
-                className={classes.navbarLogo}
-                src="Netflix-Logo.wine.png"
-              ></img>
+              <div>
+                {/* <img
+                  src="https://thewhitonline.com/wp-content/uploads/2020/09/netflix-logo.png"
+                  alt="neflix_logo"
+                  height="auto"
+                ></img> */}
+                <img
+                  className={classes.navbarLogo}
+                  src="https://thewhitonline.com/wp-content/uploads/2020/09/netflix-logo.png"
+                ></img>
+              </div>
             </NavLink>
           </Grid>
 
-          <Grid item xs={3.5} lg={3.5}>
+          <Grid item lg={4}>
             <ul className={classes.navbarList}>
-              <li className={classes.home}>
+              <li className={classes.showListItem}>
                 <Button>
                   <NavLink to="/browser">Home</NavLink>
                 </Button>
               </li>
 
-              <li className={classes.tvShows}>
+              <li className={classes.showListItem}>
                 <Button>
                   <NavLink to="/tv_shows">TV Shows</NavLink>
                 </Button>
               </li>
 
-              <li className={classes.movies}>
+              <li className={classes.showListItem}>
                 <Button>
                   <NavLink to="/movies">Movies</NavLink>
                 </Button>
               </li>
 
-              <li className={classes.latest}>
+              <li className={classes.showListItems}>
                 <Button>
                   <NavLink to="/latest">Latest</NavLink>
                 </Button>
               </li>
 
-              <li className={classes.mylist}>
+              <li className={classes.showListItem}>
                 <Button>
                   <NavLink to="/mylist">My List</NavLink>
                 </Button>
@@ -174,75 +196,54 @@ const Navbar = () => {
             </ul>
           </Grid>
 
-          <Grid item xs={7.5} lg={7.5} className={classes.navRightDiv}>
-            <Grid container xs={7.5}>
-              <ul className={classes.navbarList}>
-                <li className={classes.home}>
-                  {!searchBar ? (
-                    <Grid item xs={2.5} lg={2.5}>
-                      <IconButton
-                        onClick={handleOnClickSearch}
-                        onMouseLeave={handleOnMouseLeave}
-                        className={classes.searchIcon}
-                      >
-                        <SearchIcon color="white" />
-                      </IconButton>
-                    </Grid>
-                  ) : (
-                    <Grid item xs={2.5} lg={2.5}>
-                      <SearchBar searchText />
-                    </Grid>
-                  )}
-                </li>
-
-                <li className={classes.tvShows}>
-                  <Grid item xs={1.5} lg={1.5}>
-                    <IconButton className={classes.dvd}>
-                      <NavLink to="/dvd">DVD</NavLink>
-                    </IconButton>
-                  </Grid>
-                </li>
-
-                <li className={classes.movies}>
-                  <Grid item xs={1} lg={1}>
-                    <IconButton>
-                      <NavLink to="/gifts" className={classes.giftmanuIcon}>
-                        <CardGiftcardIcon />
-                      </NavLink>
-                    </IconButton>
-                  </Grid>
-                </li>
-
-                <li className={classes.latest}>
-                  <Grid item xs={1} lg={1}>
-                    <IconButton>
-                      <NavLink
-                        to="/notification"
-                        className={classes.notificationIcon}
-                      >
-                        <NotificationsIcon />
-                      </NavLink>
-                    </IconButton>
-                  </Grid>
-                </li>
-
-                <li className={classes.mylist}>
-                  <Grid
-                    item
-                    xs={1.5}
-                    lg={1.5}
-                    className={classes.dropdownButtonDiv}
-                  >
-                    <Avatar
-                      variant="square"
-                      className={(classes.square, classes.avatarImage)}
-                      src="netflix.png"
-                    />
-                    <ArrowDropDownIcon className={classes.dropdownIcon} />
-                  </Grid>
-                </li>
-              </ul>
-            </Grid>
+          <Grid item lg={3}>
+            {!searchBar ? (
+              <div
+                onClick={handleOnClickSearch}
+                onMouseLeave={handleOnMouseLeave}
+                className={classes.searchIcon}
+              >
+                <SearchBarBox />
+              </div>
+            ) : (
+              <div className={classes.searchBar}>
+                <SearchBar />
+              </div>
+            )}
+          </Grid>
+          <Grid item lg={2}>
+            <ul className={classes.navbarListForDvdToNotification}>
+              <li className={classes.navRightItems}>
+                <NavLink to="/dvd">DVD</NavLink>
+              </li>
+              <li className={classes.navRightItems}>
+                <NavLink to="/gifts">
+                  <CardGiftcardIcon />
+                </NavLink>
+              </li>
+              <li className={classes.navRightItems}>
+                <NavLink
+                  to="/notification"
+                  // className={classes.notificationIcon}
+                >
+                  <NotificationsIcon />
+                </NavLink>
+              </li>
+            </ul>
+          </Grid>
+          <Grid item lg={1}>
+            <ul className={classes.navRightAvatarList}>
+              <li>
+                <Avatar
+                  variant="square"
+                  className={(classes.square, classes.avatarImage)}
+                  src="netflixAvatar.png"
+                />
+              </li>
+              <li className={classes.bsCaretDown}>
+                <BsCaretDown color="white" />
+              </li>
+            </ul>
           </Grid>
         </Grid>
 

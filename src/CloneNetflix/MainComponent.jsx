@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Nav from "./Nav";
 import Navbar from "./Navbar";
 import movies from "./demoData";
 import MoviesCarousal from "./MoviesCarousal";
@@ -10,7 +11,6 @@ import ContentsOnMedia from "./DialogContents/ContentsOnMedia";
 const useStyles = makeStyles((theme) => ({
   mainComponentDiv: {
     backgroundColor: "#181818",
-
     height: "2000px",
   },
   carousalHeading: {
@@ -56,6 +56,7 @@ const MainComponent = () => {
   return (
     <div className={classes.mainComponentDiv}>
       <Navbar />
+      {/* <Nav /> */}
       <CardMedia
         className={classes.mediaBigScreen}
         image={movies[0].posterWide}
