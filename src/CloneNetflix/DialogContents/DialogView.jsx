@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "0px",
     padding: theme.spacing(3, 4),
     backgroundColor: "#181818",
-
     color: "#FFF",
   },
 
@@ -62,7 +61,13 @@ const DialogView = ({ open, movie, onClickExit }) => {
 
   return (
     <div className={classes.dialogViewMainDiv}>
-      <Dialog open={open} maxWidth="md" scroll={"body"}>
+      <Dialog
+        open={open}
+        maxWidth="md"
+        scroll={"body"}
+        transitionDuration={0}
+        TransitionProps={{ timeout: { exit: 100, appear: 300, enter: 200 } }}
+      >
         <CardMedia className={classes.mediaBigScreen} image={movie.posterWide}>
           <ContentsOnMedia movie={movie} onClickExit={onClickExit} />
         </CardMedia>
@@ -155,9 +160,6 @@ export default DialogView;
 
 function DisplayCastAndAlikeItems({ categoryNames, values, showMore }) {
   const classes = useStyles();
-  //if (!values) {
-  //  console.log(categoryNames);
-  //}
 
   return (
     <p>
@@ -187,9 +189,6 @@ function DisplayCastAndAlikeItems({ categoryNames, values, showMore }) {
 
 function DisplayMaturityDetails({ categoryNames, values, showMore }) {
   const classes = useStyles();
-  //if (!values) {
-  //  console.log(categoryNames);
-  //}
 
   return (
     <p>

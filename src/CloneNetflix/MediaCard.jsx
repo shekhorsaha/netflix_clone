@@ -1,11 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import moviePoster from "../assets/small_background.jpg";
 import { Box } from "@material-ui/core";
 
-import DialogView from "./DialogContents/DialogView";
-import HoveredCardView from "./HoveredCard/HoveredCardView";
 import ProgressWithLabel from "./ProgressBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,81 +21,54 @@ const useStyles = makeStyles((theme) => ({
   backgroundImageProgressBox: {
     padding: "5px 10px",
   },
-  mediaCardDiv: {
+  hoveredCard: {
     background: "#181818",
-    position: "relative",
+    position: "absolute",
+    zIndex: 100000,
   },
 }));
 
-const MediaCard = ({ movie }) => {
+const MediaCard = ({ movie, onMouseEnter, onClick }) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [runningId, setRunningId] = useState(0);
-  let ref = useRef();
+  const ref = useRef();
 
   const handleMouseEnterOnPoster = (e) => {
-    setRunningId(movie.id);
+    if (onMouseEnter) {
+      if (ref && ref.current) {
+        var rect = ref.current.getBoundingClientRect();
+        console.log(
+          "movie ele track:",
+          movie.id,
+          rect.top,
+          rect.right,
+          rect.bottom,
+          rect.left
+        );
+        onMouseEnter(movie.id, rect);
+      }
+    } else console.log("onMouseEnter props is not provided");
   };
-
-  const handleMouseLeaveOnPoster = (e) => {
-    setRunningId(0);
-  };
-
-  const handleClickInitialPoster = (e) => {
-    if (!open) {
-      setOpen("true");
-    } else setOpen("false");
-  };
-
-  const handleOnClickExit = (e) => {
-    setOpen(false);
-  };
-
-  useEffect(() => {
-    console.log("MediaCard, side effect running");
-    if (ref.current) {
-      console.log(
-        "ref =",
-        ref.current.offsetWidth,
-        ref.current.offsetTop,
-        ref.current.offsetHeight
-      );
-    }
-  }, [ref, ref.current]);
 
   return (
     <div
       ref={ref}
-      className={classes.mediaCardDiv}
-      style={{ overflowY: "visible" }}
-      onMouseEnter={handleMouseEnterOnPoster}
+      // onMouseEnter={handleMouseEnterOnPoster}
+      onClick={() => onClick(movie)}
     >
-      {runningId ? (
-        <HoveredCardView
-          movie={movie}
-          onMouseLeave={handleMouseLeaveOnPoster}
-        />
-      ) : (
-        <div className={classes.initialMediaDiv}>
-          <div
-            onClick={handleClickInitialPoster}
-            className={classes.initialMedia}
-            style={{ backgroundImage: "url(" + movie.posterWide + ")" }}
-          ></div>
+      <div className={classes.initialMediaDiv}>
+        <div
+          className={classes.initialMedia}
+          style={{ backgroundImage: "url(" + movie.posterWide + ")" }}
+        ></div>
 
-          <Box className={classes.backgroundImageProgressBox}>
-            <ProgressWithLabel
-              ignoreTimeDisplay={true}
-              progressCounter={movie.progressCounter}
-              totalTime={movie.totalMovieTime}
-            />
-          </Box>
-        </div>
-      )}
-
-      {open ? (
-        <DialogView movie={movie} open={open} onClickExit={handleOnClickExit} />
-      ) : null}
+        <Box className={classes.backgroundImageProgressBox}>
+          <ProgressWithLabel
+            ignoreTimeDisplay={true}
+            watchTime={movie.watchTime}
+            totalTime={movie.totalMovieTime}
+          />
+        </Box>
+      </div>
     </div>
   );
 };

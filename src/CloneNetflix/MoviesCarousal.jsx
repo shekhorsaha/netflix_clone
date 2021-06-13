@@ -6,20 +6,32 @@ import {
 import React, { useState } from "react";
 import ItemsCarousel from "react-items-carousel";
 import MediaCard from "./MediaCard";
+import { makeStyles } from "@material-ui/core";
 
-function MoviesCarousal({ movies }) {
-  const [activeItemIndex, setActiveIndex] = useState(1);
+const useStyle = makeStyles({
+  carouselItems: {
+    position: "relative",
+  },
+  mediaCardDiv: {
+    margin: "5px solid red",
+    position: "absolute",
+  },
+});
+
+function MoviesCarousal({ movies, onMouseEnter, onClick }) {
+  const [activeItemIndex, setActiveIndex] = useState(0);
+
+  const classes = useStyle();
 
   return (
-    <div style={{ overflowY: "visible" }}>
+    <div>
       <ItemsCarousel
-        style={{ overflowY: "visible" }}
         numberOfCards={5}
+        classes={{ itemWrapper: classes.carouselItems }}
         gutter={20}
         showSlither={true}
         firstAndLastGutter={true}
         freeScrolling={false}
-        // Active item configurations
         requestToChangeActive={setActiveIndex}
         activeItemIndex={activeItemIndex}
         activePosition={"center"}
@@ -40,9 +52,17 @@ function MoviesCarousal({ movies }) {
         }
         outsideChevron={false}
       >
-        {movies.map((movie) => (
-          <MediaCard movie={movie} />
-        ))}
+        {movies.map((movie) => {
+          return (
+            <MediaCard
+              movie={movie}
+              className={classes.mediaCardDiv}
+              onMouseEnter={onMouseEnter}
+              key={movie.id}
+              onClick={onClick}
+            />
+          );
+        })}
       </ItemsCarousel>
     </div>
   );

@@ -22,7 +22,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "3 Idiots",
@@ -45,7 +45,7 @@ let movies = [
       "Recommended for ages 13 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Gabbar is Back",
@@ -71,7 +71,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "andhadhun",
@@ -94,7 +94,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "MALANG",
@@ -120,7 +120,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Love Aaj Kal",
@@ -146,7 +146,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Welcome",
@@ -171,7 +171,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "3 Idiots",
@@ -194,7 +194,7 @@ let movies = [
       "Recommended for ages 13 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Gabbar is Back",
@@ -220,7 +220,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "andhadhun",
@@ -243,7 +243,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "MALANG",
@@ -269,7 +269,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Love Aaj Kal",
@@ -295,7 +295,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Welcome",
@@ -320,7 +320,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "3 Idiots",
@@ -343,7 +343,7 @@ let movies = [
       "Recommended for ages 13 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Gabbar is Back",
@@ -369,7 +369,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "andhadhun",
@@ -392,7 +392,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "MALANG",
@@ -418,7 +418,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Love Aaj Kal",
@@ -444,7 +444,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Welcome",
@@ -469,7 +469,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "3 Idiots",
@@ -492,7 +492,7 @@ let movies = [
       "Recommended for ages 13 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Gabbar is Back",
@@ -518,7 +518,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "andhadhun",
@@ -541,7 +541,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "MALANG",
@@ -567,7 +567,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Love Aaj Kal",
@@ -593,7 +593,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Welcome",
@@ -618,7 +618,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "3 Idiots",
@@ -641,7 +641,7 @@ let movies = [
       "Recommended for ages 13 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Gabbar is Back",
@@ -667,7 +667,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "andhadhun",
@@ -690,7 +690,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "MALANG",
@@ -716,7 +716,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Love Aaj Kal",
@@ -742,7 +742,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Welcome",
@@ -767,7 +767,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "3 Idiots",
@@ -790,7 +790,7 @@ let movies = [
       "Recommended for ages 13 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Gabbar is Back",
@@ -816,7 +816,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "andhadhun",
@@ -839,7 +839,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "MALANG",
@@ -865,7 +865,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
   {
     title: "Love Aaj Kal",
@@ -891,7 +891,7 @@ let movies = [
       "Recommended for ages 18 and up",
     ],
     totalMovieTime: "55",
-    progressCounter: "30",
+    watchTime: "30",
   },
 ];
 

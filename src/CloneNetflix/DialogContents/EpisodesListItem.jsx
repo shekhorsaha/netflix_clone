@@ -52,13 +52,7 @@ const EpisodesListItem = () => {
           </Grid>
         </Grid>
 
-        <Grid
-          item
-          xs={9}
-          container
-          // alignItems="center"
-          className={classes.section1}
-        >
+        <Grid item xs={9} container className={classes.section1}>
           <Grid item xs>
             <Typography gutterBottom variant="h6">
               Episode 1 Name

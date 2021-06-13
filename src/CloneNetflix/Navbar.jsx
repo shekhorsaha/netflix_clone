@@ -1,4 +1,4 @@
-import { Button, Grid, makeStyles } from "@material-ui/core";
+import { Button, Grid, IconButton, makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
@@ -10,29 +10,28 @@ import {
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Avatar from "@material-ui/core/Avatar";
 import { BsCaretDown } from "react-icons/bs";
-import IconButton from "@material-ui/core/IconButton";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import SearchBarBox from "./SearchBarBox";
+import SearchIcon from "@material-ui/icons/Search";
 
 const useStyle = makeStyles((theme) => {
   return {
     navbar: {
       display: "flex",
-      position: "static",
+      position: "relative",
       height: "60px",
       backgroundColor: "black",
+      opacity: 0.8,
     },
     navbarLogo: {
-      width: "150px",
       height: "50px",
       cursor: "pointer",
       paddingLeft: "20px",
-      // float: "left",
     },
-    navbarList: {
+    navbarItemsList: {
       display: "flex",
       listStyle: "none",
-      padding: "0px",
+      padding: "0px 10px 5px 20px",
       fontSize: "1.3em",
     },
     navRightAvatarList: {
@@ -44,8 +43,8 @@ const useStyle = makeStyles((theme) => {
     navbarListForDvdToNotification: {
       display: "flex",
       listStyle: "none",
-      paddingTop: "5px",
-      fontSize: "1.2em",
+      paddingTop: "10px",
+      float: "right",
     },
     navRightItems: {
       padding: "0px 12px",
@@ -54,27 +53,15 @@ const useStyle = makeStyles((theme) => {
       cursor: "grab",
       color: "white",
     },
-
     navRightDiv: {
       display: "flex",
       paddingTop: "10px",
       float: "right",
     },
-    searchIcon: {
-      cursor: "pointer",
-      color: "white",
-      paddingTop: "15px",
-    },
+
     dvd: {
       cursor: "pointer",
       color: "#FFF",
-    },
-    giftmanuIconDiv: {
-      cursor: "pointer",
-    },
-    giftmanuIcon: {
-      cursor: "pointer",
-      color: "white",
     },
     notificationIcon: {
       cursor: "pointer",
@@ -85,180 +72,203 @@ const useStyle = makeStyles((theme) => {
       display: "flex",
     },
     square: {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
       cursor: "pointer",
     },
     avatarImage: {
       cursor: "pointer",
       maxHeight: "30px",
-    },
-    dropdownIcon: {
-      cursor: "pointer",
-      color: "white",
-      float: "right",
+      maxWidth: "30px",
+      margin: "auto",
     },
     bsCaretDown: {
-      padding: "8px 0px 0px 5px",
       cursor: "pointer",
     },
-    searchBar: {
-      paddingTop: "20px",
+    searchIcon: {
+      cursor: "pointer",
+      color: "white",
+    },
+    searchBarIni: {
+      color: "white",
     },
   };
 });
 
-const SearchBar = ({ searchText, setSearchText }) => {
-  const BarStyling = {
-    width: "80%",
-    background: "#181818",
-    border: "1px #D9D9D9",
-    paddingTop: "5px",
-
-    // float: "left",
-    color: "#FFF",
-  };
-
-  return (
-    <input
-      style={BarStyling}
-      key="random1"
-      value={searchText}
-      placeholder={"search movie, series"}
-      onChange={(e) => setSearchText(e.target.value)}
-    />
-  );
-};
-
 const Navbar = () => {
   const classes = useStyle();
 
-  const [searchBar, setSearchBar] = useState(false);
+  const [searchBar, setSearchBar] = useState(true);
 
   const handleOnClickSearch = (e) => {
-    if (!searchBar) setSearchBar(true);
+    debugger;
+    setSearchBar(!searchBar);
   };
 
   const handleOnMouseLeave = (e) => {
-    setSearchBar(false);
+    setSearchBar(true);
   };
 
   return (
     <div className={classes.navbar}>
       <Router>
-        <Grid container>
-          <Grid item lg={2}>
-            <NavLink to="/browser">
-              <div>
-                {/* <img
-                  src="https://thewhitonline.com/wp-content/uploads/2020/09/netflix-logo.png"
-                  alt="neflix_logo"
-                  height="auto"
-                ></img> */}
-                <img
-                  className={classes.navbarLogo}
-                  src="https://thewhitonline.com/wp-content/uploads/2020/09/netflix-logo.png"
-                ></img>
-              </div>
-            </NavLink>
-          </Grid>
-
-          <Grid item lg={4}>
-            <ul className={classes.navbarList}>
-              <li className={classes.showListItem}>
-                <Button>
-                  <NavLink to="/browser">Home</NavLink>
-                </Button>
-              </li>
-
-              <li className={classes.showListItem}>
-                <Button>
-                  <NavLink to="/tv_shows">TV Shows</NavLink>
-                </Button>
-              </li>
-
-              <li className={classes.showListItem}>
-                <Button>
-                  <NavLink to="/movies">Movies</NavLink>
-                </Button>
-              </li>
-
-              <li className={classes.showListItems}>
-                <Button>
-                  <NavLink to="/latest">Latest</NavLink>
-                </Button>
-              </li>
-
-              <li className={classes.showListItem}>
-                <Button>
-                  <NavLink to="/mylist">My List</NavLink>
-                </Button>
-              </li>
-            </ul>
-          </Grid>
-
-          <Grid item lg={3}>
-            {!searchBar ? (
-              <div
-                onClick={handleOnClickSearch}
-                onMouseLeave={handleOnMouseLeave}
-                className={classes.searchIcon}
-              >
-                <SearchBarBox />
-              </div>
-            ) : (
-              <div className={classes.searchBar}>
-                <SearchBar />
-              </div>
-            )}
-          </Grid>
-          <Grid item lg={2}>
-            <ul className={classes.navbarListForDvdToNotification}>
-              <li className={classes.navRightItems}>
-                <NavLink to="/dvd">DVD</NavLink>
-              </li>
-              <li className={classes.navRightItems}>
-                <NavLink to="/gifts">
-                  <CardGiftcardIcon />
+        <Grid container alignItems="center" justify="space-between">
+          <Grid item>
+            <Grid container alignItems="center" justify="flex-start">
+              <Grid item>
+                <NavLink to="/browser">
+                  <div>
+                    <img
+                      className={classes.navbarLogo}
+                      src="https://thewhitonline.com/wp-content/uploads/2020/09/netflix-logo.png"
+                      alt="Logo"
+                    />
+                  </div>
                 </NavLink>
-              </li>
-              <li className={classes.navRightItems}>
-                <NavLink
-                  to="/notification"
-                  // className={classes.notificationIcon}
+              </Grid>
+
+              <Grid item>
+                <ul className={classes.navbarItemsList}>
+                  <li className={classes.showListItem}>
+                    <Button>
+                      <NavLink to="/browser">Home</NavLink>
+                    </Button>
+                  </li>
+
+                  <li className={classes.showListItem}>
+                    <Button>
+                      <NavLink to="/tv_shows">TV Shows</NavLink>
+                    </Button>
+                  </li>
+
+                  <li className={classes.showListItem}>
+                    <Button>
+                      <NavLink to="/movies">Movies</NavLink>
+                    </Button>
+                  </li>
+
+                  <li className={classes.showListItems}>
+                    <Button>
+                      <NavLink to="/latest">Latest</NavLink>
+                    </Button>
+                  </li>
+
+                  <li className={classes.showListItem}>
+                    <Button>
+                      <NavLink to="/mylist">My List</NavLink>
+                    </Button>
+                  </li>
+                </ul>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item>
+            <Grid container alignItems="center" justify="flex-end">
+              <Grid item>
+                <div
+                  style={{
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
+                    paddingBottom: "10px",
+                  }}
                 >
-                  <NotificationsIcon />
-                </NavLink>
-              </li>
-            </ul>
-          </Grid>
-          <Grid item lg={1}>
-            <ul className={classes.navRightAvatarList}>
-              <li>
-                <Avatar
-                  variant="square"
-                  className={(classes.square, classes.avatarImage)}
-                  src="netflixAvatar.png"
-                />
-              </li>
-              <li className={classes.bsCaretDown}>
-                <BsCaretDown color="white" />
-              </li>
-            </ul>
+                  {searchBar ? (
+                    <div className={classes.searchBarIni}>
+                      <SearchIcon onClick={handleOnClickSearch} />
+                    </div>
+                  ) : (
+                    <div
+                      onBlur={handleOnMouseLeave}
+                      className={classes.searchIcon}
+                    >
+                      <SearchBarBox autoFocus={!searchBar} />
+                    </div>
+                  )}
+                </div>
+              </Grid>
+
+              <Grid item>
+                <div
+                  style={{
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <NavLink to="/notification">
+                    <NotificationsIcon />
+                  </NavLink>
+                </div>
+              </Grid>
+
+              <Grid item>
+                <div
+                  style={{
+                    paddingLeft: "15px",
+                    paddingRight: "30px",
+                    paddingBottom: "15px",
+                  }}
+                >
+                  <NavLink to="/profile">
+                    <Grid container alignItems="center" justify="flex-end">
+                      <Grid item>
+                        <div style={{ paddingRight: "10px" }}>
+                          <Avatar
+                            variant="square"
+                            className={(classes.square, classes.avatarImage)}
+                            src="netflixAvatar.png"
+                          />
+                        </div>
+                      </Grid>
+                      <Grid item>
+                        <BsCaretDown color="white" />
+                      </Grid>
+                    </Grid>
+                  </NavLink>
+                </div>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
-
-        <Switch>
-          <Route exact path="/browser"></Route>
-          <Route exact path="/tv_shows"></Route>
-          <Route exact path="/movies"></Route>
-          <Route exact path="/latest"></Route>
-          <Route exact path="/mylist"></Route>
-          <Route exact path="/dvd"></Route>
-          <Route exact path="/gifts"></Route>
-          <Route exact path="/notification"></Route>
-        </Switch>
       </Router>
     </div>
   );
 };
 export default Navbar;
+
+/*
+ 
+
+<Grid item>
+                {searchBar ? (
+                  <div className={classes.searchBarIni}>
+                    <SearchIcon onClick={handleOnClickSearch} />
+                  </div>
+                ) : (
+                  <div
+                    onBlur={handleOnMouseLeave}
+                    className={classes.searchIcon}
+                  >
+                    <SearchBarBox />
+                  </div>
+                )}
+              </Grid>
+
+              <Grid item>
+                <NavLink to="/notification">
+                  <NotificationsIcon />
+                </NavLink>
+              </Grid>
+
+              <Grid item>
+                <Avatar
+                  variant="square"
+                  className={(classes.square, classes.avatarImage)}
+                  src="netflixAvatar.png"
+                />
+
+                <BsCaretDown color="white" />
+              </Grid>
+            </Grid>
+            
+ */

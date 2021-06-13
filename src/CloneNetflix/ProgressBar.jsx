@@ -17,32 +17,36 @@ const LinearProgressWithLabel = ({
         <Box width="100%" mr={1}>
           <LinearProgress
             color="secondary"
-            variant="buffer"
+            variant="determinate"
             value={(watchedTime / totalTime) * 100}
           />
         </Box>
       ) : null}
+
       {/* for hovered card */}
       {!ignoreTimeDisplay && !lessWidth ? (
         <Box width="67%" mr={1}>
           <LinearProgress
             color="secondary"
-            variant="buffer"
+            variant="determinate"
             value={(watchedTime / totalTime) * 100}
           />
         </Box>
       ) : null}
+
       {/* for dialog processbar */}
       {lessWidth ? (
         <Box width="50%" mr={1}>
           <LinearProgress
             color="secondary"
-            variant="buffer"
+            variant="determinate"
             value={(watchedTime / totalTime) * 100}
           />
         </Box>
       ) : null}
+
       {/* for written timing */}
+
       {!ignoreTimeDisplay ? (
         <Box minWidth={65}>
           <span style={{ color: "#FFF" }}>{`${Math.round(
@@ -59,7 +63,7 @@ LinearProgressWithLabel.propTypes = {
    * The value of the progress indicator for the determinate and buffer variants.
    * Value between 0 and 100.
    */
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
 };
 
 const useStyles = makeStyles({
@@ -69,7 +73,7 @@ const useStyles = makeStyles({
 });
 
 const ProgressWithLabel = ({
-  progressCounter,
+  watchTime,
   totalTime,
   ignoreTimeDisplay,
   lessWidth,
@@ -79,7 +83,7 @@ const ProgressWithLabel = ({
   return (
     <div className={classes.root}>
       <LinearProgressWithLabel
-        watchedTime={progressCounter}
+        watchedTime={watchTime}
         totalTime={totalTime}
         ignoreTimeDisplay={ignoreTimeDisplay}
         lessWidth={lessWidth}

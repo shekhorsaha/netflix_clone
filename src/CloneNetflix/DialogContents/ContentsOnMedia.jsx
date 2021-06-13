@@ -19,7 +19,7 @@ import ThumbUpAltRoundedIcon from "@material-ui/icons/ThumbUpAltRounded";
 import ThumbDownAltRoundedIcon from "@material-ui/icons/ThumbDownAltRounded";
 
 import posterShadow from "../../assets/nav-shadow.png";
-import "semantic-ui-css/semantic.min.css";
+// import "semantic-ui-css/semantic.min.css";
 import ProgressWithLabel from "../ProgressBar";
 import { Box } from "@material-ui/core";
 
@@ -32,14 +32,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     backgroundImage: "url(" + posterShadow + ")",
-  },
-
-  resumeButton: {
-    // margin: theme.spacing(1),
-  },
-
-  loadingProgressDiv: {
-    // padding: "10px",
   },
 }));
 
@@ -152,7 +144,7 @@ const ContentsOnMedia = ({ movie, onClickExit }) => {
           <Grid item xs={6}>
             <div className={classes.loadingProgressDiv}>
               <ProgressWithLabel
-                progressCounter={movie.progressCounter}
+                watchTime={movie.watchTime}
                 totalTime={movie.totalMovieTime}
                 lessWidth={true}
               />

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   rootMediumCard: {
     background: "#111111",
     transitionDelay: 2000,
-    zIndex: 55,
+    zIndex: 550000,
     width: "150%",
     height: "150%",
     position: "relative",
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   expandIcon: { color: "white" },
 }));
 
-const HoveredCardView = ({ movie, onMouseLeave }) => {
+const HoveredCardView = ({ movie, onMouseLeave, rect }) => {
   const classes = useStyles();
 
   const [clicked, setClicked] = useState(true);
@@ -74,7 +74,12 @@ const HoveredCardView = ({ movie, onMouseLeave }) => {
 
   return (
     <div
-      style={{ zIndex: 700000, position: "absolute" }}
+      style={{
+        zIndex: 70000000,
+        position: "absolute",
+        top: rect.top,
+        left: rect.left,
+      }}
       onMouseLeave={onMouseLeave}
     >
       <Card className={classes.rootMediumCard} onClick={handleOnClickCard}>
@@ -82,10 +87,10 @@ const HoveredCardView = ({ movie, onMouseLeave }) => {
           className={classes.hoveredCardMedia}
           image={movie.posterWide}
         />
-        <CardActions>
+        <CardActions style={{ zIndex: 999999 }}>
           <Grid container>
-            <Grid item xs="10">
-              <Grid container xs="10">
+            <Grid item>
+              <Grid container>
                 <Grid item>
                   <Tooltip title="play">
                     <IconButton className={classes.playIcon}>
@@ -98,7 +103,6 @@ const HoveredCardView = ({ movie, onMouseLeave }) => {
                     <IconButton
                       className={classes.addIcon}
                       onClick={handleAddToList}
-                      clicked
                     >
                       {clicked ? <AddIcon /> : <CheckIcon />}
                     </IconButton>
@@ -135,10 +139,13 @@ const HoveredCardView = ({ movie, onMouseLeave }) => {
               </Grid>
             </Grid>
 
-            <Grid style={{ float: "right" }} item xs="2">
+            <Grid style={{ float: "right" }} item xs={2}>
               <Tooltip title="Episodes & info">
-                <IconButton className={classes.expandIcon}>
-                  <ExpandMoreIcon onClick={handleClickExpandIcon} />
+                <IconButton
+                  className={classes.expandIcon}
+                  onClick={handleClickExpandIcon}
+                >
+                  <ExpandMoreIcon />
                 </IconButton>
               </Tooltip>
             </Grid>
@@ -147,7 +154,7 @@ const HoveredCardView = ({ movie, onMouseLeave }) => {
 
         <div style={{ paddingLeft: "25px" }}>
           <ProgressWithLabel
-            progressCounter={movie.progressCounter}
+            watchTime={movie.watchTime}
             totalTime={movie.totalMovieTime}
           />
         </div>
